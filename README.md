@@ -1,7 +1,7 @@
 ## Terrain Amplification with Implicit 3D Features
 Source code for some results shown in the paper "Terrain Amplification with Implicit 3D Features" published in ACM-TOG in 2019. 
 This is aimed at researchers, students or profesionnals who may want to reproduce **some** of the results described in the paper.
-For more information about the project: [Project page](https://aparis69.github.io/projects/paris2019_3D.html)
+[Click here for more information about the project](https://aparis69.github.io/projects/paris2019_3D.html).
 
 ### Important notes
 * This code is **not** the one which produced the scenes seen in the paper. Everything has been *recoded* on my side to make sure it is free to use and doesn't break copyrights. 
