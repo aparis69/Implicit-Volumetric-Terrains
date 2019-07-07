@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files\GeoTree">
+      <UniqueIdentifier>{3b2f6ad9-2203-46ea-a12d-d0f7a1e69d54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TTree">
+      <UniqueIdentifier>{df0cfad9-eaf6-4cfd-a038-cd317215a78c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scenes">
+      <UniqueIdentifier>{f9381515-a0ab-474f-93f9-d2c638cf8208}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Code\Source\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\bvh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\TTree\tbinary.cpp">
+      <Filter>Source Files\TTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\TTree\tblend.cpp">
+      <Filter>Source Files\TTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\TTree\tcubicfalloff.cpp">
+      <Filter>Source Files\TTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\TTree\tfloatingisland.cpp">
+      <Filter>Source Files\TTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\TTree\tnode.cpp">
+      <Filter>Source Files\TTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\TTree\tprimitive.cpp">
+      <Filter>Source Files\TTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\TTree\tsphere.cpp">
+      <Filter>Source Files\TTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\TTree\tspherenoise.cpp">
+      <Filter>Source Files\TTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\TTree\tterrainnode.cpp">
+      <Filter>Source Files\TTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\TTree\ttree.cpp">
+      <Filter>Source Files\TTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\TTree\tunary.cpp">
+      <Filter>Source Files\TTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\TTree\tunion.cpp">
+      <Filter>Source Files\TTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\TTree\tvertex.cpp">
+      <Filter>Source Files\TTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\TTree\tvertexnoise.cpp">
+      <Filter>Source Files\TTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\GeoTree\geobinary.cpp">
+      <Filter>Source Files\GeoTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\GeoTree\geoblend.cpp">
+      <Filter>Source Files\GeoTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\GeoTree\geofalloff.cpp">
+      <Filter>Source Files\GeoTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\GeoTree\geofractal-3d.cpp">
+      <Filter>Source Files\GeoTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\GeoTree\geonoise1d.cpp">
+      <Filter>Source Files\GeoTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\GeoTree\geonoise3d.cpp">
+      <Filter>Source Files\GeoTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\GeoTree\geonoise-karst.cpp">
+      <Filter>Source Files\GeoTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\GeoTree\geopoint.cpp">
+      <Filter>Source Files\GeoTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\GeoTree\geosphere.cpp">
+      <Filter>Source Files\GeoTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\GeoTree\geostrata.cpp">
+      <Filter>Source Files\GeoTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\GeoTree\geotree.cpp">
+      <Filter>Source Files\GeoTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\GeoTree\geounary.cpp">
+      <Filter>Source Files\GeoTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\GeoTree\geouniform.cpp">
+      <Filter>Source Files\GeoTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\GeoTree\geowarp.cpp">
+      <Filter>Source Files\GeoTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\heightfield.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\sea-scene.cpp">
+      <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\island-scene.cpp">
+      <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\karst-scene.cpp">
+      <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\TTree\tanalytic-cliff.cpp">
+      <Filter>Source Files\TTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Source\MC\MC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Code\Include\vec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Include\bvh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Include\geotree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Include\ttree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Include\basics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Include\noise.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Include\heightfield.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
