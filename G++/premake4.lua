@@ -19,15 +19,14 @@ solution "ImplicitTerrains"
 	configuration "linux"
 		buildoptions { "-mtune=native -march=native" }
 		buildoptions { "-std=c++14" }
-		buildoptions { "-W -Wall -Wsign-compare -Wno-unused-parameter -Wno-unused-variable" }
-		buildoptions { "-flto"}
+		buildoptions { "-w" }
+		buildoptions { "-flto -g"}
 		linkoptions { "-flto"}
-
-	configuration { "linux", "debug" }
-		buildoptions { "-g"}
 		linkoptions { "-g"}
 
-fileList = { rootDir .. "/Code/Source/*.cpp", rootDir .. "/Code/Include/*.h" }
+fileList = { rootDir .. "/Code/Source/*.cpp", rootDir .. "/Code/Include/*.h", rootDir .. "/Code/Source/TTree/*.cpp",
+rootDir .. "/Code/Source/MC/*.cpp", rootDir .. "/Code/Source/GeoTree/*.cpp" }
+
 project("ImplicitTerrains")
 	language "C++"
 	kind "ConsoleApp"

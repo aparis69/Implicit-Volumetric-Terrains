@@ -7,32 +7,32 @@ ifndef verbose
   SILENT = @
 endif
 
-CC = gcc
-CXX = g++
-AR = ar
+ifndef CC
+  CC = gcc
+endif
 
-ifndef RESCOMP
-  ifdef WINDRES
-    RESCOMP = $(WINDRES)
-  else
-    RESCOMP = windres
-  endif
+ifndef CXX
+  CXX = g++
+endif
+
+ifndef AR
+  AR = ar
 endif
 
 ifeq ($(config),debug64)
   OBJDIR     = obj/x64/Debug
   TARGETDIR  = Out
-  TARGET     = $(TARGETDIR)/ImplicitTerrains.exe
+  TARGET     = $(TARGETDIR)/ImplicitTerrains
   DEFINES   += -DDEBUG
   INCLUDES  += -I. -I../Code/Include -I/usr/include
-  ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
-  ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
-  ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -m64 -L/usr/lib64
-  LDDEPS    +=
-  LIBS      += $(LDDEPS)
-  LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
+  CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
+  CFLAGS    += $(CPPFLAGS) $(ARCH) -g -m64 -mtune=native -march=native -std=c++14 -w -flto -g
+  CXXFLAGS  += $(CFLAGS) 
+  LDFLAGS   += -m64 -L/usr/lib64 -flto -g
+  LIBS      += 
+  RESFLAGS  += $(DEFINES) $(INCLUDES) 
+  LDDEPS    += 
+  LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
@@ -44,17 +44,17 @@ endif
 ifeq ($(config),release64)
   OBJDIR     = obj/x64/Release
   TARGETDIR  = Out
-  TARGET     = $(TARGETDIR)/ImplicitTerrains.exe
-  DEFINES   +=
+  TARGET     = $(TARGETDIR)/ImplicitTerrains
+  DEFINES   += 
   INCLUDES  += -I. -I../Code/Include -I/usr/include
-  ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O3 -m64
-  ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
-  ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -s -m64 -L/usr/lib64
-  LDDEPS    +=
-  LIBS      += $(LDDEPS)
-  LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
+  CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
+  CFLAGS    += $(CPPFLAGS) $(ARCH) -O3 -m64 -mtune=native -march=native -std=c++14 -w -flto -g
+  CXXFLAGS  += $(CFLAGS) 
+  LDFLAGS   += -s -m64 -L/usr/lib64 -flto -g
+  LIBS      += 
+  RESFLAGS  += $(DEFINES) $(INCLUDES) 
+  LDDEPS    += 
+  LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
@@ -70,6 +70,36 @@ OBJECTS := \
 	$(OBJDIR)/karst-scene.o \
 	$(OBJDIR)/main.o \
 	$(OBJDIR)/sea-scene.o \
+	$(OBJDIR)/tanalytic-cliff.o \
+	$(OBJDIR)/tbinary.o \
+	$(OBJDIR)/tblend.o \
+	$(OBJDIR)/tcubicfalloff.o \
+	$(OBJDIR)/tfloatingisland.o \
+	$(OBJDIR)/tnode.o \
+	$(OBJDIR)/tprimitive.o \
+	$(OBJDIR)/tsphere.o \
+	$(OBJDIR)/tspherenoise.o \
+	$(OBJDIR)/tterrainnode.o \
+	$(OBJDIR)/ttree.o \
+	$(OBJDIR)/tunary.o \
+	$(OBJDIR)/tunion.o \
+	$(OBJDIR)/tvertex.o \
+	$(OBJDIR)/tvertexnoise.o \
+	$(OBJDIR)/MC.o \
+	$(OBJDIR)/geobinary.o \
+	$(OBJDIR)/geoblend.o \
+	$(OBJDIR)/geofalloff.o \
+	$(OBJDIR)/geofractal-3d.o \
+	$(OBJDIR)/geonoise-karst.o \
+	$(OBJDIR)/geonoise1d.o \
+	$(OBJDIR)/geonoise3d.o \
+	$(OBJDIR)/geopoint.o \
+	$(OBJDIR)/geosphere.o \
+	$(OBJDIR)/geostrata.o \
+	$(OBJDIR)/geotree.o \
+	$(OBJDIR)/geounary.o \
+	$(OBJDIR)/geouniform.o \
+	$(OBJDIR)/geowarp.o \
 
 RESOURCES := \
 
@@ -126,34 +156,117 @@ prelink:
 ifneq (,$(PCH))
 $(GCH): $(PCH)
 	@echo $(notdir $<)
-	$(SILENT) $(CXX) -x c++-header $(ALL_CXXFLAGS) -MMD -MP $(DEFINES) $(INCLUDES) -o "$@" -MF "$(@:%.gch=%.d)" -c "$<"
+	-$(SILENT) cp $< $(OBJDIR)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 endif
 
 $(OBJDIR)/bvh.o: ../Code/Source/bvh.cpp
 	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
-
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/heightfield.o: ../Code/Source/heightfield.cpp
 	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
-
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/island-scene.o: ../Code/Source/island-scene.cpp
 	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
-
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/karst-scene.o: ../Code/Source/karst-scene.cpp
 	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
-
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/main.o: ../Code/Source/main.cpp
 	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
-
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/sea-scene.o: ../Code/Source/sea-scene.cpp
 	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/tanalytic-cliff.o: ../Code/Source/TTree/tanalytic-cliff.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/tbinary.o: ../Code/Source/TTree/tbinary.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/tblend.o: ../Code/Source/TTree/tblend.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/tcubicfalloff.o: ../Code/Source/TTree/tcubicfalloff.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/tfloatingisland.o: ../Code/Source/TTree/tfloatingisland.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/tnode.o: ../Code/Source/TTree/tnode.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/tprimitive.o: ../Code/Source/TTree/tprimitive.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/tsphere.o: ../Code/Source/TTree/tsphere.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/tspherenoise.o: ../Code/Source/TTree/tspherenoise.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/tterrainnode.o: ../Code/Source/TTree/tterrainnode.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/ttree.o: ../Code/Source/TTree/ttree.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/tunary.o: ../Code/Source/TTree/tunary.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/tunion.o: ../Code/Source/TTree/tunion.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/tvertex.o: ../Code/Source/TTree/tvertex.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/tvertexnoise.o: ../Code/Source/TTree/tvertexnoise.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/MC.o: ../Code/Source/MC/MC.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/geobinary.o: ../Code/Source/GeoTree/geobinary.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/geoblend.o: ../Code/Source/GeoTree/geoblend.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/geofalloff.o: ../Code/Source/GeoTree/geofalloff.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/geofractal-3d.o: ../Code/Source/GeoTree/geofractal-3d.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/geonoise-karst.o: ../Code/Source/GeoTree/geonoise-karst.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/geonoise1d.o: ../Code/Source/GeoTree/geonoise1d.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/geonoise3d.o: ../Code/Source/GeoTree/geonoise3d.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/geopoint.o: ../Code/Source/GeoTree/geopoint.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/geosphere.o: ../Code/Source/GeoTree/geosphere.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/geostrata.o: ../Code/Source/GeoTree/geostrata.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/geotree.o: ../Code/Source/GeoTree/geotree.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/geounary.o: ../Code/Source/GeoTree/geounary.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/geouniform.o: ../Code/Source/GeoTree/geouniform.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/geowarp.o: ../Code/Source/GeoTree/geowarp.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 -include $(OBJECTS:%.o=%.d)
-ifneq (,$(PCH))
-  -include $(OBJDIR)/$(notdir $(PCH)).d
-endif

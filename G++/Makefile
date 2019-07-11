@@ -16,6 +16,9 @@ ImplicitTerrains:
 	@echo "==== Building ImplicitTerrains ($(config)) ===="
 	@${MAKE} --no-print-directory -C . -f ImplicitTerrains.make
 
+run:
+	cd Out/ && ./ImplicitTerrains && cd ../
+
 clean:
 	@${MAKE} --no-print-directory -C . -f ImplicitTerrains.make clean
 

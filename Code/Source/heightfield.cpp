@@ -2,6 +2,7 @@
 #include "vec.h"
 #include "ttree.h"
 
+#include <algorithm>
 #include <array>
 #include <deque>
 #include <queue>

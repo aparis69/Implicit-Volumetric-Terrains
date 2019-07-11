@@ -22,7 +22,7 @@ to produce it.
 */
 int main()
 {
-	//SeaScene();
+	SeaScene();
 
 	//FloatingIsland();
 
