@@ -22,11 +22,11 @@ to produce it.
 */
 int main()
 {
-	SeaScene();
+	//SeaScene();
 
-	//FloatingIsland();
+	FloatingIsland();
 
-	KarstScene();
+	//KarstScene();
 
 	return 0;
 }
