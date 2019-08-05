@@ -11,7 +11,7 @@ Hence, the results as well as the timings may differ from the ones in the paper.
 ### Testing
 There is no dependency. Running the program will output 3 .obj files which can then be visualized in another application (Blender, MeshLab). Tests have been made on:
 * Visual Studio 2017: double click on the solution in ./VS2017/ and Ctrl + F5 to run
-* Ubuntu 16.0: cd ./G++/ && make && make run
+* Ubuntu 16.04: cd ./G++/ && make && make run
 
 ### Citation
 You can use this code in any way you want, however please credit the original article:

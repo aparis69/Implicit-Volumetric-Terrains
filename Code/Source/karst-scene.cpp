@@ -85,7 +85,7 @@ static std::vector<TNode*> KarstInvasionPercolation(TTree* tree, GeoTree* geoTre
 	};
 
 	// Hardcoded parameters
-	const Box bbox = tree->GetBox();
+	const Box bbox = tree->GetBox().Extended(Vector3(-5.0f));
 	const float radius = 12.0f;
 	const float energy = -8.0f;
 	const float step = radius / 1.5f;
