@@ -1,3 +1,8 @@
+//
+// Everything here has been adapted from https://github.com/nsf/mc
+// A public domain marching cube implementation
+//
+
 #include <cstdio>
 #include <cstdint>
 #include <vector>
