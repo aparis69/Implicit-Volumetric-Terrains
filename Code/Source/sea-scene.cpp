@@ -88,6 +88,7 @@ void SeaScene()
 	geoTree->Blend(new GeoStrata(15, 10, -5.0));
 
 	// Erosion (3 levels of depth for more interesting effects)
+	std::cout << "Sea Erosion" << std::endl;
 	{
 		ErodeWithPrimitives(terrainTree, geoTree, -15.0);
 		ErodeWithPrimitives(terrainTree, geoTree, -10.0);
@@ -96,4 +97,5 @@ void SeaScene()
 
 	// Export
 	marching_cube("sea.obj", terrainTree, 350);
+	std::cout << std::endl;
 }

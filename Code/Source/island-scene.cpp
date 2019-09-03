@@ -7,6 +7,8 @@ multiple noise function with our volumetric system.
 */
 void FloatingIsland()
 {
+	std::cout << "Floating Islands" << std::endl;
+
 	// Terrain
 	TNode* major = new TBlend(
 		new TFloatingIsland(Vector3(5.0, 0.0, 0.0), 50.0, 15.0, 10),
@@ -17,4 +19,5 @@ void FloatingIsland()
 
 	// Export
 	marching_cube("islands.obj", terrainTree, 150);
+	std::cout << std::endl;
 }

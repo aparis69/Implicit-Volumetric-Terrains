@@ -202,6 +202,7 @@ void KarstScene()
 	);
 
 	// Invasion-Percolation: first compute resurgence points and then perform the simulation.
+	std::cout << "Karst Invasion-Percolation" << std::endl;
 	{
 		std::vector<Vector3> featurePositions = GetFeatureLocationsKarts(hf);
 		std::vector<TNode*> nodes = KarstInvasionPercolation(terrainTree, geoTree, featurePositions);
@@ -211,4 +212,5 @@ void KarstScene()
 
 	// Export
 	marching_cube("karst.obj", terrainTree, 200);
+	std::cout << std::endl;
 }

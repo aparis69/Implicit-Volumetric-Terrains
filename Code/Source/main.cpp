@@ -24,7 +24,7 @@ int main()
 {
 	SeaScene();
 
-	//FloatingIsland();
+	FloatingIsland();
 
 	KarstScene();
 
