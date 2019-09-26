@@ -1,5 +1,5 @@
 ## Terrain Amplification with Implicit 3D Features
-Source code for some of the results shown in the paper "Terrain Amplification with Implicit 3D Features" published in ACM-TOG in 2019. 
+Source code for some of the results shown in the paper "Terrain Amplification with Implicit 3D Features" published in ACM-TOG in 2019 and presented at Siggraph Asia 2019. 
 This is aimed at researchers, students or profesionnals who may want to reproduce the results of the paper.
 [Click here for more information about the project](https://aparis69.github.io/projects/paris2019_3D.html).
 
