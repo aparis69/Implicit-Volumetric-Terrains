@@ -17,15 +17,15 @@ There is no dependency. Running the program will output 3 .obj files which can t
 ### Citation
 You can use this code in any way you want, however please credit the original article:
 ```
-@article {Paris2019,
-    author = {Paris, Axel and Galin, Eric and Peytavie,
-              Adrien and Guérin, Eric and Gain, James},
-    title = {Terrain Amplification with Implicit 3D Features},
-    journal = {ACM Transactions on Graphics},
-    volume = {??},
-    number = {?},
-    year = {2019},
-  }
+@article{Paris2019
+	author = {Paris, Axel and Galin, Eric and Peytavie, Adrien and Gu{\'e}rin, Eric and Gain, James},
+	title = {Terrain Amplification with Implicit 3D Features},
+	journal = {ACM Trans. Graph.},
+	volume = {38},
+	number = {5},
+	year = {2019},
+	pages = {147:1--147:15},
+}
 ```	
 
 ### Missing
