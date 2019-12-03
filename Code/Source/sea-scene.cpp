@@ -2,8 +2,17 @@
 #include "geotree.h"
 #include "bvh.h"
 
+/*
+	This example slightly differ from the explanation I gave in my talk at Siggraph Asia 2019.
+	In fact, you can model the sea erosion as a special case of the invasion-percolation, with a different
+	initial seed computation step.
+	Here we tried a more "procedural" approach, finding seeds in 3D on the implicit surface with a bisection algorithm.
+	This is also the implementation described in the paper. Both approaches (Invasion-Percolaion and Procedural sea erosion)
+	work and give similar results.
+*/
+
 /*!
-\brief Performs a poisson sphere check on a set of point and a candidate position. Returns true if the candidate
+\brief Performs a poisson sphere check on a set of points and a candidate position. Returns true if the candidate
 fits in the distribution, false otherwise.
 \param p candidate position
 \param pts set of point

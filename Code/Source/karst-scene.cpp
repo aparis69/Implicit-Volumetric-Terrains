@@ -4,7 +4,7 @@
 #include <algorithm>
 
 /*!
-\brief Performs a poisson sphere check on a set of point and a candidate position. Returns true if the candidate
+\brief Performs a poisson sphere check on a set of points and a candidate position. Returns true if the candidate
 fits in the distribution, false otherwise.
 \param p candidate position
 \param pts set of point
@@ -23,11 +23,13 @@ static bool PoissonSphereCheck(const Vector3& p, const std::vector<Vector3>& pts
 
 /*!
 \brief This function does a 2D analysis and sampling for the karst scene. We use the slope map to detect locations
-on the cliff (resurgence points). Parameters are hard-coded in the function.
+on the cliff (infiltration/resurgence points). Parameters are hard-coded in the function. In the paper, we used a sampling of the stream
+power field of the initial heightfield, which can give slightly more realistic seed points taking into account the drainage area
+(strength of the river network).
 \param hf the input 2D heightfield
 \return a vector of locations for karst entry points. Used for the IP-simulation.
 */
-static std::vector<Vector3> GetFeatureLocationsKarts(HeightField& hf)
+static std::vector<Vector3> GetInitialSeeds(HeightField& hf)
 {
 	// Density map
 	ScalarField2D slopeField = hf.Slope();
@@ -97,6 +99,9 @@ static std::vector<TNode*> KarstInvasionPercolation(TTree* tree, GeoTree* geoTre
 
 	std::vector<TNode*> ret;
 	std::vector<Vector3> poissonSampling;
+
+	// You can also put a limited number of iteration, as this may take a while to converge if
+	// You put too many sample in the neighbour computation step.
 	while (featurePositions.empty() == false)
 	{
 		// Pop the softest seed and try to dig a karst from there
@@ -163,10 +168,11 @@ static std::vector<TNode*> KarstInvasionPercolation(TTree* tree, GeoTree* geoTre
 			continue;
 
 		// Neighborhood is composed of 2 random point sampled in the unit circle, with y in [-0.2, 0.2]
+		// You can put more of course, at the expense of computation time.
 		featurePositions.push_back(p + Circle2(Vector2(0), 1).RandomOn().ToVector3(Random::Uniform(-0.2f, 0.2f)) * step);
 		featurePositions.push_back(p + Circle2(Vector2(0), 1).RandomOn().ToVector3(Random::Uniform(-0.2f, 0.2f)) * step);
 
-		// Re-sort all the seed by decreasing rock softness
+		// Re-sort all the seed by decreasing rock hardness
 		std::sort(featurePositions.begin(), featurePositions.end(), predicate);
 	}
 	std::cout << "Total primitive count : " << ret.size() << std::endl;
@@ -190,7 +196,7 @@ void KarstScene()
 
 	// Geology Tree
 	// Strata are defined on top of the noise so that Invasion-Percolation 
-	// Can achieve some "geological floor" effects.
+	// Can achieve some "geological floor" effects, as it can be observed in references pictures.
 	GeoTree* geoTree = new GeoTree(
 		new GeoBlend(
 			new GeoBlend(
@@ -201,10 +207,10 @@ void KarstScene()
 		)
 	);
 
-	// Invasion-Percolation: first compute resurgence points and then perform the simulation.
+	// Invasion-Percolation: first compute initial seed points and then perform the simulation.
 	std::cout << "Karst Invasion-Percolation" << std::endl;
 	{
-		std::vector<Vector3> featurePositions = GetFeatureLocationsKarts(hf);
+		std::vector<Vector3> featurePositions = GetInitialSeeds(hf);
 		std::vector<TNode*> nodes = KarstInvasionPercolation(terrainTree, geoTree, featurePositions);
 		if (nodes.size() > 0)
 			terrainTree->Blend(TTreeBVH::OptimizeHierarchy(nodes, 0, int(nodes.size())));

@@ -111,17 +111,11 @@ namespace Math
 	inline float CubicSmoothStep(float x, float a, float b)
 	{
 		if (x < a)
-		{
 			return 0.0f;
-		}
 		else if (x > b)
-		{
 			return 1.0f;
-		}
 		else
-		{
 			return 1.0f - CubicSmooth((x - a) * (x - a), (b - a) * (b - a));
-		}
 	}
 
 	inline float QuinticSmooth(float t)
