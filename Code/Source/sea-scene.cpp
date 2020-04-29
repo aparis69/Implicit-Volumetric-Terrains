@@ -4,11 +4,14 @@
 
 /*
 	This example slightly differ from the explanation I gave in my talk at Siggraph Asia 2019.
-	In fact, you can model the sea erosion as a special case of the invasion-percolation, with a different
-	initial seed computation step.
-	Here we tried a more "procedural" approach, finding seeds in 3D on the implicit surface with a bisection algorithm.
+	In this talk, I showed how you can model sea erosion as a special case of the invasion-percolation, with a different
+	initial seed computation step and a different geology tree.
+
+	Here we tried a more "procedural" approach, finding seeds in 3D onto the implicit surface with a bisection algorithm.
 	This is also the implementation described in the paper. Both approaches (Invasion-Percolaion and Procedural sea erosion)
 	work and give similar results.
+
+	For an example of the Invasion-Percolation algorithm, see karst-scene.cpp file.
 */
 
 /*!
@@ -57,7 +60,7 @@ static void ErodeWithPrimitives(TTree* tree, GeoTree* geoTree, float primitiveEn
 
 		// Do not erode on plain surface
 		Vector3 g = tree->Gradient(p);
-		double d = Math::Abs(Dot(Normalize(g), Vector3(0, 1, 0)));
+		float d = Math::Abs(Dot(Normalize(g), Vector3(0, 1, 0)));
 		if (d > slopeTolerance)
 			continue;
 

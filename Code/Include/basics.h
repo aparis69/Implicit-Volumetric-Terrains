@@ -588,7 +588,7 @@ public:
 	*/
 	inline ScalarField2D(int nx, int ny, const Box2D& bbox) : box(bbox), nx(nx), ny(ny)
 	{
-		values.resize(nx * ny);
+		values.resize(size_t(nx * ny));
 	}
 
 	/*
@@ -881,7 +881,7 @@ public:
 		int j = int(u * (nx - 1));
 
 		if (!Inside(i, j) || !Inside(i + 1, j + 1))
-			return -1.0;
+			return -1.0f;
 
 		float anchorU = j * texelX;
 		float anchorV = i * texelY;

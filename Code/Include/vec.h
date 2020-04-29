@@ -1,6 +1,6 @@
 #pragma once
 
-#include <math.h>
+#include <cmath>
 #include <iostream>
 
 /* Forward Declarations */
@@ -242,24 +242,16 @@ public:
 		if (x >= y)
 		{
 			if (x >= z)
-			{
 				return 0;
-			}
 			else
-			{
 				return 2;
-			}
 		}
 		else
 		{
 			if (y >= z)
-			{
 				return 1;
-			}
 			else
-			{
 				return 2;
-			}
 		}
 	}
 	static inline Vector3 Min(const Vector3& a, const Vector3& b)
@@ -290,12 +282,11 @@ inline float Magnitude(const Vector3& u)
 }
 inline float SquaredMagnitude(const Vector3& u)
 {
-	float m = Magnitude(u);
-	return m * m;
+	return u.x * u.x + u.y * u.y + u.z * u.z;
 }
 inline Vector3 Normalize(const Vector3& v)
 {
-	float kk = 1 / Magnitude(v);
+	float kk = 1.0f / Magnitude(v);
 	return v * kk;
 }
 inline Vector3 operator-(const Vector3& v)
@@ -326,7 +317,7 @@ struct Vector2
 public:
 	float x, y;
 
-	explicit Vector2() : x(0.0), y(0.0) { }
+	explicit Vector2() : x(0.0f), y(0.0f) { }
 	explicit Vector2(const Vector2i& v) : x(float(v.x)), y(float(v.y)) { }
 	explicit Vector2(float n) : x(n), y(n) { }
 	explicit Vector2(float x, float y) : x(x), y(y) { }
@@ -398,9 +389,9 @@ public:
 		return y;
 	}
 	friend std::ostream& operator<< (std::ostream& stream, const Vector2& u);
-	inline Vector3 ToVector3(float z) const
+	inline Vector3 ToVector3(float yy) const
 	{
-		return Vector3(x, z, y);
+		return Vector3(x, yy, y);
 	}
 	inline float Max() const
 	{
@@ -426,12 +417,11 @@ inline float Magnitude(const Vector2& u)
 }
 inline float SquaredMagnitude(const Vector2& u)
 {
-	float m = Magnitude(u);
-	return m * m;
+	return u.x * u.x + u.y * u.y;
 }
 inline Vector2 Normalize(const Vector2& v)
 {
-	float kk = 1 / Magnitude(v);
+	float kk = 1.0f / Magnitude(v);
 	return v * kk;
 }
 inline Vector2 operator-(const Vector2& v)

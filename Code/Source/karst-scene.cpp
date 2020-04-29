@@ -3,6 +3,12 @@
 #include "bvh.h"
 #include <algorithm>
 
+/*
+	Example of an invasion-percolation algorithm adapted to Karst and cave modeling.
+	Here, we show how to get the initial seeds on the cliff side - you can also get the infiltration
+	point using the drainage area of the input heightfield (HeightField::DrainageArea() function).
+*/
+
 /*!
 \brief Performs a poisson sphere check on a set of points and a candidate position. Returns true if the candidate
 fits in the distribution, false otherwise.

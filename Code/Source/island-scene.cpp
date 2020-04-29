@@ -1,9 +1,9 @@
 #include "ttree.h"
 
 /*!
-\brief This scene is an example of the "Floating Islands" figure shown in the paper.
-It is not the exact same scene. Everything island is defined analytically by combining
-multiple noise function with our volumetric system.
+\brief This scene is an example of one of the "Floating Islands" figure shown in the paper.
+Every island was defined analytically by combining multiple noise function with our volumetric heightfield
+primitive. For more details, please refer to the paper.
 */
 void FloatingIsland()
 {

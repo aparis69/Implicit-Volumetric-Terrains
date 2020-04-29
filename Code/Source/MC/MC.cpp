@@ -1,6 +1,7 @@
 //
 // Everything here has been adapted from https://github.com/nsf/mc
 // A public domain marching cube implementation
+// Note that this implementation is not made to be fast :)
 //
 
 #include <cstdio>

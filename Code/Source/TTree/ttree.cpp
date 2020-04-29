@@ -94,7 +94,7 @@ bool TTree::Find(Vector3& p, bool s, const Box& box, int n) const
 	for (int i = 0; i < n; i++)
 	{
 		p = box.RandomInside();
-		double v = Intensity(p);
+		float v = Intensity(p);
 		if (s == (v > 0.0))
 			return true;
 	}
@@ -126,7 +126,7 @@ Vector3 TTree::Dichotomy(Vector3 a, Vector3 b, float va, float vb, float length,
 	Vector3 c = (a * vb - b * va) / (vb - va);;
 	while (length > epsilon)
 	{
-		double vc = Intensity(c);
+		float vc = Intensity(c);
 		int ic = vc > 0 ? 1 : -1;
 		if (ia + ic == 0)
 		{
