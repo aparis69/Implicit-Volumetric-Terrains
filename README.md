@@ -18,6 +18,8 @@ There is no dependency. Running the program will output 3 .obj files which can t
 * Visual Studio 2019: double click on the solution in ./VS2019/ and Ctrl + F5 to run
 * Ubuntu 16.04: cd ./G++/ && make && make run
 
+In you can't compile or run the code, the resulting obj files are available in the Objs/ folder in the repo.
+
 ### Citation
 You can use this code in any way you want, however please credit the original article:
 ```
@@ -35,5 +37,4 @@ You can use this code in any way you want, however please credit the original ar
 ### Missing
 There are still some things missing from the paper implementation. They might be added in the future if someone is interested. What is not in the code:
 * Optimized Marching-cubes
-* Canyon erosion
 * Hoodoos shape-grammar growth process
