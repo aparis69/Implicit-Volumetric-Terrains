@@ -44,28 +44,13 @@
     <ClCompile Include="..\Code\Source\TTree\tprimitive.cpp">
       <Filter>Source Files\TTree</Filter>
     </ClCompile>
-    <ClCompile Include="..\Code\Source\TTree\tsphere.cpp">
-      <Filter>Source Files\TTree</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Code\Source\TTree\tspherenoise.cpp">
-      <Filter>Source Files\TTree</Filter>
-    </ClCompile>
     <ClCompile Include="..\Code\Source\TTree\tterrainnode.cpp">
       <Filter>Source Files\TTree</Filter>
     </ClCompile>
     <ClCompile Include="..\Code\Source\TTree\ttree.cpp">
       <Filter>Source Files\TTree</Filter>
     </ClCompile>
-    <ClCompile Include="..\Code\Source\TTree\tunary.cpp">
-      <Filter>Source Files\TTree</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Code\Source\TTree\tunion.cpp">
-      <Filter>Source Files\TTree</Filter>
-    </ClCompile>
     <ClCompile Include="..\Code\Source\TTree\tvertex.cpp">
-      <Filter>Source Files\TTree</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Code\Source\TTree\tvertexnoise.cpp">
       <Filter>Source Files\TTree</Filter>
     </ClCompile>
     <ClCompile Include="..\Code\Source\GeoTree\geobinary.cpp">
@@ -77,37 +62,16 @@
     <ClCompile Include="..\Code\Source\GeoTree\geofalloff.cpp">
       <Filter>Source Files\GeoTree</Filter>
     </ClCompile>
-    <ClCompile Include="..\Code\Source\GeoTree\geofractal-3d.cpp">
-      <Filter>Source Files\GeoTree</Filter>
-    </ClCompile>
     <ClCompile Include="..\Code\Source\GeoTree\geonoise1d.cpp">
       <Filter>Source Files\GeoTree</Filter>
     </ClCompile>
-    <ClCompile Include="..\Code\Source\GeoTree\geonoise3d.cpp">
-      <Filter>Source Files\GeoTree</Filter>
-    </ClCompile>
     <ClCompile Include="..\Code\Source\GeoTree\geonoise-karst.cpp">
-      <Filter>Source Files\GeoTree</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Code\Source\GeoTree\geopoint.cpp">
-      <Filter>Source Files\GeoTree</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Code\Source\GeoTree\geosphere.cpp">
       <Filter>Source Files\GeoTree</Filter>
     </ClCompile>
     <ClCompile Include="..\Code\Source\GeoTree\geostrata.cpp">
       <Filter>Source Files\GeoTree</Filter>
     </ClCompile>
     <ClCompile Include="..\Code\Source\GeoTree\geotree.cpp">
-      <Filter>Source Files\GeoTree</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Code\Source\GeoTree\geounary.cpp">
-      <Filter>Source Files\GeoTree</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Code\Source\GeoTree\geouniform.cpp">
-      <Filter>Source Files\GeoTree</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Code\Source\GeoTree\geowarp.cpp">
       <Filter>Source Files\GeoTree</Filter>
     </ClCompile>
     <ClCompile Include="..\Code\Source\heightfield.cpp">

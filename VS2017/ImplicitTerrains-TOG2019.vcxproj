@@ -128,17 +128,10 @@
     <ClCompile Include="..\Code\Source\GeoTree\geobinary.cpp" />
     <ClCompile Include="..\Code\Source\GeoTree\geoblend.cpp" />
     <ClCompile Include="..\Code\Source\GeoTree\geofalloff.cpp" />
-    <ClCompile Include="..\Code\Source\GeoTree\geofractal-3d.cpp" />
     <ClCompile Include="..\Code\Source\GeoTree\geonoise-karst.cpp" />
     <ClCompile Include="..\Code\Source\GeoTree\geonoise1d.cpp" />
-    <ClCompile Include="..\Code\Source\GeoTree\geonoise3d.cpp" />
-    <ClCompile Include="..\Code\Source\GeoTree\geopoint.cpp" />
-    <ClCompile Include="..\Code\Source\GeoTree\geosphere.cpp" />
     <ClCompile Include="..\Code\Source\GeoTree\geostrata.cpp" />
     <ClCompile Include="..\Code\Source\GeoTree\geotree.cpp" />
-    <ClCompile Include="..\Code\Source\GeoTree\geounary.cpp" />
-    <ClCompile Include="..\Code\Source\GeoTree\geouniform.cpp" />
-    <ClCompile Include="..\Code\Source\GeoTree\geowarp.cpp" />
     <ClCompile Include="..\Code\Source\heightfield.cpp" />
     <ClCompile Include="..\Code\Source\island-scene.cpp" />
     <ClCompile Include="..\Code\Source\karst-scene.cpp" />
@@ -152,14 +145,9 @@
     <ClCompile Include="..\Code\Source\TTree\tfloatingisland.cpp" />
     <ClCompile Include="..\Code\Source\TTree\tnode.cpp" />
     <ClCompile Include="..\Code\Source\TTree\tprimitive.cpp" />
-    <ClCompile Include="..\Code\Source\TTree\tsphere.cpp" />
-    <ClCompile Include="..\Code\Source\TTree\tspherenoise.cpp" />
     <ClCompile Include="..\Code\Source\TTree\tterrainnode.cpp" />
     <ClCompile Include="..\Code\Source\TTree\ttree.cpp" />
-    <ClCompile Include="..\Code\Source\TTree\tunary.cpp" />
-    <ClCompile Include="..\Code\Source\TTree\tunion.cpp" />
     <ClCompile Include="..\Code\Source\TTree\tvertex.cpp" />
-    <ClCompile Include="..\Code\Source\TTree\tvertexnoise.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Code\Include\basics.h" />

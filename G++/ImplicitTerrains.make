@@ -77,29 +77,17 @@ OBJECTS := \
 	$(OBJDIR)/tfloatingisland.o \
 	$(OBJDIR)/tnode.o \
 	$(OBJDIR)/tprimitive.o \
-	$(OBJDIR)/tsphere.o \
-	$(OBJDIR)/tspherenoise.o \
 	$(OBJDIR)/tterrainnode.o \
 	$(OBJDIR)/ttree.o \
-	$(OBJDIR)/tunary.o \
-	$(OBJDIR)/tunion.o \
 	$(OBJDIR)/tvertex.o \
-	$(OBJDIR)/tvertexnoise.o \
 	$(OBJDIR)/MC.o \
 	$(OBJDIR)/geobinary.o \
 	$(OBJDIR)/geoblend.o \
 	$(OBJDIR)/geofalloff.o \
-	$(OBJDIR)/geofractal-3d.o \
 	$(OBJDIR)/geonoise-karst.o \
 	$(OBJDIR)/geonoise1d.o \
-	$(OBJDIR)/geonoise3d.o \
-	$(OBJDIR)/geopoint.o \
-	$(OBJDIR)/geosphere.o \
 	$(OBJDIR)/geostrata.o \
 	$(OBJDIR)/geotree.o \
-	$(OBJDIR)/geounary.o \
-	$(OBJDIR)/geouniform.o \
-	$(OBJDIR)/geowarp.o \
 
 RESOURCES := \
 
@@ -199,28 +187,13 @@ $(OBJDIR)/tnode.o: ../Code/Source/TTree/tnode.cpp
 $(OBJDIR)/tprimitive.o: ../Code/Source/TTree/tprimitive.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/tsphere.o: ../Code/Source/TTree/tsphere.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/tspherenoise.o: ../Code/Source/TTree/tspherenoise.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/tterrainnode.o: ../Code/Source/TTree/tterrainnode.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/ttree.o: ../Code/Source/TTree/ttree.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/tunary.o: ../Code/Source/TTree/tunary.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/tunion.o: ../Code/Source/TTree/tunion.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/tvertex.o: ../Code/Source/TTree/tvertex.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/tvertexnoise.o: ../Code/Source/TTree/tvertexnoise.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/MC.o: ../Code/Source/MC/MC.cpp
@@ -235,37 +208,16 @@ $(OBJDIR)/geoblend.o: ../Code/Source/GeoTree/geoblend.cpp
 $(OBJDIR)/geofalloff.o: ../Code/Source/GeoTree/geofalloff.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/geofractal-3d.o: ../Code/Source/GeoTree/geofractal-3d.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/geonoise-karst.o: ../Code/Source/GeoTree/geonoise-karst.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/geonoise1d.o: ../Code/Source/GeoTree/geonoise1d.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/geonoise3d.o: ../Code/Source/GeoTree/geonoise3d.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/geopoint.o: ../Code/Source/GeoTree/geopoint.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/geosphere.o: ../Code/Source/GeoTree/geosphere.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/geostrata.o: ../Code/Source/GeoTree/geostrata.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/geotree.o: ../Code/Source/GeoTree/geotree.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/geounary.o: ../Code/Source/GeoTree/geounary.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/geouniform.o: ../Code/Source/GeoTree/geouniform.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/geowarp.o: ../Code/Source/GeoTree/geowarp.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 

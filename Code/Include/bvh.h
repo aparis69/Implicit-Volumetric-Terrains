@@ -4,7 +4,6 @@
 class TNode;
 
 // A Bounding volume hierarchy interface for the terrain construction tree.
-// Essential in order to keep acceptable meshing time.
 class TTreeBVH
 {
 public:

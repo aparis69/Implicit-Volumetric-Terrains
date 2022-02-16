@@ -118,41 +118,6 @@ public:
 	virtual float Intensity(const Vector3&) const;
 };
 
-// Vertex skeletal primitive displaced with noise
-class TVertexNoise : public TVertex
-{
-protected:
-	float a;	//!< %Noise amplitude.
-	float w;	//!< %Noise wavelength.
-
-public:
-	TVertexNoise(const Vector3&, float R, float E, float A, float W);
-
-	float Intensity(const Vector3&) const;
-};
-
-// Sphere skeletal primitive
-class TSphere : public TCubicFalloff, protected Sphere
-{
-public:
-	TSphere(const Vector3& c, float sr, float r, float e);
-
-	virtual float Intensity(const Vector3&) const;
-};
-
-// Sphere skeletal primitive with noise
-class TSphereNoise : public TCubicFalloff, protected Sphere
-{
-protected:
-	float a;	//!< %Noise amplitude.
-	float f;	//!< %Noise frequency.
-	int o;		//!< %Noise octave.
-
-public:
-	TSphereNoise(const Vector3& c, float sr, float fr, float e, float A, float W, int O);
-	virtual float Intensity(const Vector3&) const;
-};
-
 // Binary Operator 
 class TBinary : public TNode
 {
@@ -164,17 +129,6 @@ public:
 	~TBinary();
 };
 
-// Unary operator
-class TUnary : public TNode
-{
-protected:
-	TNode * e; //!< Sub-tree.
-
-public:
-	TUnary(TNode*);
-	~TUnary();
-};
-
 // Blend
 class TBlend : public TBinary
 {
@@ -182,15 +136,6 @@ public:
 	TBlend(TNode*, TNode*);
 	TBlend(TNode*, TNode*, TNode*);
 	TBlend(TNode*, TNode*, TNode*, TNode*);
-	float Intensity(const Vector3&) const;
-	Vector3 Gradient(const Vector3&) const;
-};
-
-// Boolean Union
-class TUnion : public TBinary
-{
-public:
-	TUnion(TNode*, TNode*);
 	float Intensity(const Vector3&) const;
 	Vector3 Gradient(const Vector3&) const;
 };
