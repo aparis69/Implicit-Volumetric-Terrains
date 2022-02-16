@@ -18,6 +18,6 @@ void FloatingIsland()
 	TTree* terrainTree = new TTree(major);
 
 	// Export
-	marching_cube("islands.obj", terrainTree, 150);
+	marching_cube("islands.obj", terrainTree, 100);
 	std::cout << std::endl;
 }
