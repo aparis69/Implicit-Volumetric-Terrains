@@ -43,7 +43,8 @@ float SmoothDisc2D::Intensity(const Vector2& p) const
 	d = sqrt(d);
 	d -= r;
 	d *= d;
-	return Math::CubicSmoothCompact(d, fr * fr); // Warning: this should be Smooth() and not SmoothCompact() TodoTodoTodo
+
+	return Math::CubicSmooth(d, fr * fr);
 }
 
 
@@ -79,7 +80,7 @@ float TFloatingIsland::Intensity(const Vector3& q) const
 	float za = -depth + depth / 2.0f*(1.0f - t)*PerlinNoise::GetValue(p / 30.0f + 0.54f) + depth / 4.0f*(1.0f - t)*PerlinNoise::GetValue(p / 14.0f + .63f) + depth / 8.0f*PerlinNoise::GetValue(p / 7.0f + .13f) + depth / 16.0f*PerlinNoise::GetValue(p / 4.0f + .79f) + depth / 32.0f*PerlinNoise::GetValue(p / 2.0f + .79f);
 	float zb = height / 2.0f + height / 4.0f*(1.0f - t)*PerlinNoise::GetValue(p / 89.0f) + height / 8.0f*PerlinNoise::GetValue(p / 46.0f) + 3 * PerlinNoise::GetValue(p / 14.0f);
 
-	// big pikes inside
+	// Big pikes inside
 	za -= 10.0f*SmoothDisc2D(Vector2(-r / 4.0f, r / 8.0f), 0.0f, r / 2.0f).Intensity(Vector2(p));
 	za -= 8.0f*SmoothDisc2D(Vector2(r / 2.0f, r / 4.0f), 0.0f, r / 2.0f).Intensity(Vector2(p));
 	za -= 12.0f*SmoothDisc2D(Vector2(r / 8.0f, -r / 8.0f), 0.0f, r).Intensity(Vector2(p));

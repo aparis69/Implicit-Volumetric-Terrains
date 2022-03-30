@@ -650,7 +650,7 @@ static void generate_geometry_smooth()
 		}
 	}
 	for (Vertex &v : vertices)
-		v.normal = normalize(v.normal);
+		v.normal = -normalize(v.normal);
 }
 
 
