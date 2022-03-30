@@ -1,5 +1,5 @@
 solution "ImplicitTerrains"
-	configurations { "Debug", "Release" }
+	configurations { "release" }
 
 	platforms { "x64" }
 	
@@ -7,12 +7,7 @@ solution "ImplicitTerrains"
 
 	rootDir = path.getabsolute("../")
 	
-	configuration "Debug"
-		targetdir "./Out/Debug"
-		defines { "DEBUG" }
-		flags { "Symbols" }
-
-	configuration "Release"
+	configuration "release"
 		targetdir "./Out/Release"
 		flags { "OptimizeSpeed" }
 
@@ -21,6 +16,7 @@ solution "ImplicitTerrains"
 		buildoptions { "-std=c++14" }
 		buildoptions { "-w" }
 		buildoptions { "-flto -g"}
+		linkoptions { "-fopenmp"}
 		linkoptions { "-flto"}
 		linkoptions { "-g"}
 
