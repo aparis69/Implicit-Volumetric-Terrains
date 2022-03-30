@@ -6,7 +6,10 @@
 
 Source code for some of the results shown in the paper "Terrain Amplification with Implicit 3D Features" published in ACM-TOG in 2019 
 and presented at Siggraph Asia 2019. This is aimed at researchers, students or profesionnals who may want to reproduce **some** of the results described in the paper.
-[Click here for more information about the project](https://aparis69.github.io/public_html/projects/paris2019_3D.html).
+
+[Project Page](https://aparis69.github.io/public_html/projects/paris2019_3D.html)
+
+[Paper](https://drive.google.com/file/d/1PiV5D2y8ku4Qw6pUQ9cEyzdrNxNeeIid/view)
 
 ### Important notes
 * This code is **not** the one which produced the scenes seen in the paper. Everything has been *recoded* on my side to make sure it is free to use. The original code from the paper is dependent on internal libraries of my team. Hence, the results as well as the timings may differ from the ones in the paper.
